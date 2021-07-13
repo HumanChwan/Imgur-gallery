@@ -1,0 +1,23 @@
+.error {
+    a {
+        text-decoration: none;
+    }
+    text-align: center;
+
+    > * {
+        margin: 2rem;
+    }
+
+    &_text {
+        color: $purpleMain;
+        font-size: 3rem;
+    }
+
+    &_pre_link {
+        font-size: 2rem;
+    }
+
+    &_link {
+        font-size: 2rem;
+    }
+}

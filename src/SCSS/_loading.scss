@@ -1,0 +1,23 @@
+.loading {
+    margin: calc(50vh - 100px) auto;
+    width: 3rem;
+    height: 3rem;
+    &_main_circle {
+        border-radius: 50%;
+        width: 3rem;
+        height: 3rem;
+        background-color: transparent;
+        border: 0.5rem solid #aaa;
+        border-top: 0.5rem solid $blueMain;
+        animation: rotater 1s linear infinite;
+    }
+
+    @keyframes rotater {
+        0% {
+            transform: rotate(0);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}
