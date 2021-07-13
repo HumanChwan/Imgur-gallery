@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 
 export default function GalleryCard({
     imgData,
-    setIsLoading: setGalleryReLoad,
+    setFetchingData: setGalleryReload,
 }) {
     const history = useHistory()
     const [actionLoad, setActionLoad] = useState(false)
@@ -27,10 +27,10 @@ export default function GalleryCard({
         const parsed = await response.json()
 
         if (!parsed.success) {
-            history.push('./error')
+            history.push('/error')
             return
         }
-        setGalleryReLoad(true)
+        setGalleryReload(true)
     }
 
     function handleClick(e) {
