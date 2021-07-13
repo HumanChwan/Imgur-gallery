@@ -1,0 +1,55 @@
+.gallery-root {
+    h2 {
+        box-shadow: 0 0.25rem 0.5rem darken($bgColor, 10%);
+        padding: 2rem 3rem;
+    }
+}
+
+.gallery {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+
+    &_card {
+        border-radius: 0.5rem;
+        width: 20rem;
+        height: max-content;
+        margin: 1rem;
+
+        &:hover {
+            box-shadow: 0 0 0.5rem $darkerBlue;
+        }
+
+        &_image {
+            width: 20rem;
+            img {
+                border-radius: 0.5rem;
+                width: 100%;
+            }
+            &.fade {
+                opacity: 0.6;
+            }
+        }
+
+        &_button {
+            font-size: 1.25rem;
+            padding: 0.5rem 0.125rem;
+            background: none;
+            border: none;
+            margin: 1rem 1rem;
+            color: $darkerBlue;
+            &:hover {
+                background-color: darken($bgColor, 5%);
+                border-radius: 0.5rem;
+                cursor: pointer;
+                &.wait {
+                    cursor: wait;
+                }
+            }
+        }
+        &.wait {
+            cursor: wait;
+        }
+    }
+}

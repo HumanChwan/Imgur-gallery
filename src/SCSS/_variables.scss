@@ -1,5 +1,9 @@
 $blueMain: rgb(17, 50, 100);
-$bgColor: rgb(219, 219, 219);
+$darkerBlue: rgb(10, 31, 63);
+$bgColor: rgb(245, 248, 250);
 
-$navBgColor: rgb(17, 50, 100);
+$navBgColor: $blueMain;
 $navText: $bgColor;
+
+$cardBgColor: rgb(219, 210, 210);
+$cardText: $bgColor;

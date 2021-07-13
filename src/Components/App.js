@@ -9,6 +9,7 @@ import NavBar from './NavBar'
 import '../SCSS/style.scss'
 import Home from './Home/Home'
 import Gallery from './Gallery/Gallery'
+import CnxError from './CnxError'
 
 export default function App() {
     return (
@@ -18,6 +19,7 @@ export default function App() {
                 <Switch>
                     <Route path='/home' exact component={Home} />
                     <Route path='/gallery' exact component={Gallery} />
+                    <Route path='/error' component={CnxError} />
                     <Redirect to='/home' />
                 </Switch>
             </Router>
