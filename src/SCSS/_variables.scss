@@ -2,10 +2,15 @@ $blueMain: rgb(17, 50, 100);
 $darkerBlue: rgb(10, 31, 63);
 $purpleMain: rgb(19, 6, 65);
 $bgColor: rgb(245, 248, 250);
-$muddyBgColor: rgba(215, 221, 224, 0.5);
+$bgColorTr: rgba(17, 50, 100, 0.925);
+$muddyBgColor: rgba(215, 221, 224, 0.7);
+$greenMain: rgb(29, 110, 42);
+$redMain: rgb(138, 0, 0);
 
 $navBgColor: $blueMain;
 $navText: $bgColor;
+
+$homeText: $bgColor;
 
 $cardBgColor: rgb(219, 210, 210);
 $cardText: $bgColor;

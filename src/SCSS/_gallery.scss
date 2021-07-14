@@ -11,6 +11,9 @@
     align-items: center;
     flex-wrap: wrap;
 
+    position: fixed;
+    max-height: calc(100% - 10rem);
+    overflow: auto;
     &_card {
         border-radius: 0.5rem;
         width: 20rem;

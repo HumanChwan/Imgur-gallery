@@ -1,6 +1,11 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { acceptedFormats, isImageType, validFormat } from '../../Util/util'
+import {
+    acceptedFormats,
+    isImageType,
+    setText,
+    validFormat,
+} from '../../Util/util'
 import Loading from '../Loading'
 
 export default function Home() {
@@ -8,6 +13,7 @@ export default function Home() {
     const [inputValue, setInputValue] = useState('')
     const [isImage, setIsImage] = useState(true)
     const history = useHistory()
+    const [status, setStatus] = useState(setText(null))
     const [isLoading, setIsLoading] = useState(false)
 
     async function uploadFile(file) {
@@ -22,7 +28,6 @@ export default function Home() {
 
         const formData = new FormData()
         formData.append(type, file)
-        console.log(file)
 
         const response = await fetch(
             process.env.REACT_APP_BASE_URL + '/' + type,
@@ -35,33 +40,35 @@ export default function Home() {
 
         const parsed = await response.json()
 
-        if (!parsed.success) {
-            // error
-        }
+        setStatus(setText(parsed.success ? 'SUCCESS' : 'FAILED'))
     }
 
-    async function handleSubmit(e) {
+    function handleSubmit(e) {
         e.preventDefault()
         if (files.length === 0) {
-            console.log('error')
+            setStatus(setText('EMPTY'))
+            return
         }
 
         setIsLoading(true)
-        await uploadFile(files[0]).catch((err) => {
-            console.log(err)
-            history.push('/error')
-        })
-        setIsLoading(false)
 
-        setFiles([])
-        setInputValue('')
+        uploadFile(files[0])
+            .then(() => {
+                setIsLoading(false)
+                setFiles([])
+                setInputValue('')
+            })
+            .catch((err) => {
+                console.log(err)
+                history.push('/error')
+            })
     }
 
     function handlePreUpload(e) {
         if (e.target.files.length === 0) return
 
         if (!validFormat(e.target.files[0].type)) {
-            console.log('file type err')
+            setStatus(setText('FILE_ERROR'))
             setFiles([])
             setInputValue('')
             return
@@ -74,11 +81,13 @@ export default function Home() {
     }
 
     return (
-        <div>
+        <div className='hoom-root'>
             {isLoading && <Loading>Uploading...</Loading>}
-            <form>
-                <div>
-                    <label htmlFor='fileInput'> input: </label>{' '}
+            <div className='home'>
+                <form className='home_main'>
+                    <label htmlFor='fileInput' className='home_main_label'>
+                        Choose File to be Uploaded:{' '}
+                    </label>{' '}
                     <input
                         type='file'
                         id='fileInput'
@@ -87,10 +96,23 @@ export default function Home() {
                         files={files}
                         value={inputValue}
                         onChange={handlePreUpload}
+                        className='home_main_input'
                     />
+                    <button onClick={handleSubmit} className='home_main_submit'>
+                        Upload!
+                    </button>
+                </form>
+                {/*
+                    Classes: 
+                        home_status_success
+                        home_status_failed
+                        home_status_fileErr
+                        home_status_empty
+                */}
+                <div className={'home_status_bar ' + status[1]}>
+                    {status[0]}
                 </div>
-                <button onClick={handleSubmit}>Upload!</button>
-            </form>
+            </div>
         </div>
     )
 }

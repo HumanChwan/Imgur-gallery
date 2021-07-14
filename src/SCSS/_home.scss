@@ -1,0 +1,65 @@
+.home {
+    width: 100%;
+    height: calc(100% - 4rem);
+    position: fixed;
+    // background-image: url('../assets/BgHome.jpg');
+    // background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &_main {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        background-color: $blueMain;
+        height: 10rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 0 0.25rem $darkerBlue;
+        padding: 1rem 1rem;
+        color: $homeText;
+        &_label {
+            margin-bottom: 0.5rem;
+        }
+
+        &_input {
+            margin-bottom: 2rem;
+        }
+
+        &_submit {
+            border: none;
+            background: none;
+            padding: 0.25rem;
+            font-size: 1.5rem;
+            border-radius: 0.25rem;
+            color: $homeText;
+            background-color: $darkerBlue;
+            align-self: center;
+
+            &:hover {
+                cursor: pointer;
+                background-color: lighten($darkerBlue, 5%);
+            }
+        }
+    }
+
+    &_status {
+        &_bar {
+            margin-top: 15rem;
+            font-size: 1.75rem;
+        }
+
+        &_success {
+            color: $greenMain;
+        }
+
+        &_failed,
+        &_fileErr,
+        &_empty {
+            color: $redMain;
+        }
+    }
+}
