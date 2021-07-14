@@ -7,6 +7,7 @@ import {
     validFormat,
 } from '../../Util/util'
 import Loading from '../Loading'
+import { ReactComponent as Upload } from '../../assets/upload.svg'
 
 export default function Home() {
     const [files, setFiles] = useState([])
@@ -99,7 +100,8 @@ export default function Home() {
                         className='home_main_input'
                     />
                     <button onClick={handleSubmit} className='home_main_submit'>
-                        Upload!
+                        Upload!{'  '}
+                        <Upload />
                     </button>
                 </form>
                 {/*

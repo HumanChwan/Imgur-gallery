@@ -2,8 +2,8 @@
     width: 100%;
     height: calc(100% - 4rem);
     position: fixed;
-    // background-image: url('../assets/BgHome.jpg');
-    // background-size: cover;
+    background-image: url('../assets/bgImages.png');
+    background-size: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,7 +22,7 @@
         padding: 1rem 1rem;
         color: $homeText;
         &_label {
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
         }
 
         &_input {
