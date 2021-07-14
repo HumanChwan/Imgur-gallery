@@ -17,7 +17,7 @@ export default function GalleryCard({
         )
 
         const response = await fetch(
-            `${process.env.REACT_APP_ACCOUNT_IMAGE_DELETE}${imgData.deletehash}`,
+            process.env.REACT_APP_ACCOUNT_URL + '/' + imgData.deletehash,
             {
                 method: 'DELETE',
                 headers: header,

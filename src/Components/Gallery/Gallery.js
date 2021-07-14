@@ -15,19 +15,17 @@ export default function Gallery() {
             `Bearer ${process.env.REACT_APP_ACCESS_TOKEN}`
         )
 
-        const response = await fetch(process.env.REACT_APP_ACCOUNT_IMAGES_URL, {
+        const response = await fetch(process.env.REACT_APP_ACCOUNT_URL + 's', {
             method: 'GET',
             headers: header,
         })
 
         const data = await response.json()
-
+        await cachifyImgs(data.data.map((imageData) => imageData.link))
         setImages(data.data)
-        cachifyImgs(data.data.map((imageData) => imageData.link))
     }
 
     async function cachifyImgs(ImgSrcs) {
-        console.log('1')
         const promises = ImgSrcs.map((src) => {
             return new Promise((resolve, reject) => {
                 const img = new Image()
@@ -38,29 +36,25 @@ export default function Gallery() {
             })
         })
 
-        console.log('2')
         await Promise.all(promises)
-        console.log('3')
 
         setIsLoading(false)
     }
 
     useEffect(() => {
-        console.log('4')
         if (isLoading) {
             getGalleryImages().catch((err) => {
                 console.log(err)
                 history.push('/error')
             })
         }
-
         // eslint-disable-next-line
     }, [isLoading])
 
     return (
         <>
             {isLoading ? (
-                <Loading />
+                <Loading>Getting Image Gallery...</Loading>
             ) : (
                 <div className='gallery-root'>
                     <h2>Gallery:</h2>

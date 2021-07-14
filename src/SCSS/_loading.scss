@@ -1,15 +1,34 @@
 .loading {
-    margin: calc(50vh - 100px) auto;
-    width: 3rem;
-    height: 3rem;
-    &_main_circle {
-        border-radius: 50%;
-        width: 3rem;
-        height: 3rem;
-        background-color: transparent;
-        border: 0.5rem solid #aaa;
-        border-top: 0.5rem solid $blueMain;
-        animation: rotater 1s linear infinite;
+    width: 100%;
+    height: calc(100% - 4rem);
+    position: relative;
+    z-index: 10;
+
+    &_main {
+        background-color: $muddyBgColor;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        &_circle {
+            border-radius: 50%;
+            width: 3rem;
+            height: 3rem;
+            background-color: transparent;
+            border: 0.5rem solid #aaa;
+            border-top: 0.5rem solid $blueMain;
+            animation: rotater 1s linear infinite;
+        }
+
+        &_caption {
+            margin-top: 2rem;
+            font-size: 1.5rem;
+            color: $blueMain;
+        }
     }
 
     @keyframes rotater {
